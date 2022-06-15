@@ -4,12 +4,12 @@ from tqdm import tqdm
 import os
 import time
 
-excel_file_location = './urls.xlsx'
-download_dir = './downloads/'
+excel_file_location = './urls.xlsx'  # your excel file, change to whatever file name you want.
+download_dir = './downloads/'  # your default download location.
 
 grab_time_start = time.time()
 
-# This reads your file
+# This reads your file and sheet name is "Sheet1"
 df = pd.read_excel(excel_file_location, sheet_name='Sheet1')  # Your root data location
 total_rows = len(df.index)  # total rows in your root file.
 
@@ -40,7 +40,7 @@ def download(name: str, url: str):
             bar.update(size)
 
 
-# This looping all urls until finished.
+# This looping all urls until finished. Broken URLs will be skipped.
 def download_loop(header_name):
     i = 0
     while i < total_rows:
