@@ -13,7 +13,7 @@ Is the header name in your excel file, by default I called it "urls" but you can
 
 # The script doesn't working, why?
 1. Make sure your Python is updated (I am using python 3.10).
-2. Make sure all packages is installed:
+2. Make sure all packages is installed:<br/>
 Run these commands in your CMD, terminal:<br/>
 pip install pandas<br/>
 pip install requests<br/>
