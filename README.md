@@ -15,12 +15,12 @@ Is the header name in your excel file, by default I called it "urls" but you can
 1. Make sure your Python is updated (I am using python 3.10).
 2. Make sure all packages is installed: 
 Run these commands in your CMD, terminal:
-pip install pandas
-pip install requests
-pip install tqdm
-pip install os
-pip install time
-pip install logging
+a. pip install pandas
+b. pip install requests
+c. pip install tqdm
+d. pip install os
+e. pip install time
+f. pip install logging
 
 # Still have questions? simply contact me on linkdin.
 https://www.linkedin.com/in/georgekhananaev/
