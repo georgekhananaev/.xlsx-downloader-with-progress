@@ -41,11 +41,11 @@ def download(name: str, url: str):
 
 
 # This looping all urls until finished.
-def download_loop():
+def download_loop(header_name):
     i = 0
     while i < total_rows:
         try:
-            url = df.at[i, 'urls']  # getting url for every row
+            url = df.at[i, header_name]  # getting url for every row by header name.
             basename = os.path.basename(url)  # extracts file name from your URL
             save_to = str(download_dir) + str(basename)  # saving location + final name
             download(save_to, url)  # starting the downloads
@@ -56,8 +56,8 @@ def download_loop():
             pass  # remove this and use raise if you want to debug
             # raise  # use this for debug otherwise errors will be skipped
 
-        i += 1  # adding 1 to i, so it will scan all rows in your file
-
+        i += 1  # adding 1 to i, so it will continue row by row until finished.
+        
         if i == total_rows:
             grab_time_end = time.time()
             total_time = grab_time_end - grab_time_start
@@ -65,4 +65,4 @@ def download_loop():
             break
 
 
-download_loop()  # start downloads
+download_loop('urls')  # start downloads
