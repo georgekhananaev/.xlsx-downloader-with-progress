@@ -4,12 +4,12 @@ from tqdm import tqdm
 import os
 import time
 
-excel_file_location = './urls.xlsx'  # your excel file, change to whatever file name you want.
-download_dir = './downloads/'  # your default download location.
+excel_file_location = './urls.xlsx'
+download_dir = './downloads/'
 
 grab_time_start = time.time()
 
-# This reads your file and sheet name is "Sheet1"
+# This reads your file
 df = pd.read_excel(excel_file_location, sheet_name='Sheet1')  # Your root data location
 total_rows = len(df.index)  # total rows in your root file.
 
@@ -40,7 +40,7 @@ def download(name: str, url: str):
             bar.update(size)
 
 
-# This looping all urls until finished. Broken URLs will be skipped.
+# This looping all urls until finished.
 def download_loop(header_name):
     i = 0
     while i < total_rows:
@@ -51,13 +51,12 @@ def download_loop(header_name):
             download(save_to, url)  # starting the downloads
 
         except:
-            found_error_text = colored('Found some error or None value, skipped row: ', 'red')
-            print(found_error_text, i)
+            print('Found some error or URL is broken')
             pass  # remove this and use raise if you want to debug
             # raise  # use this for debug otherwise errors will be skipped
 
         i += 1  # adding 1 to i, so it will continue row by row until finished.
-        
+
         if i == total_rows:
             grab_time_end = time.time()
             total_time = grab_time_end - grab_time_start
